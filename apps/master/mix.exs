@@ -26,9 +26,10 @@ defmodule Master.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
-      # {:sibling_app_in_umbrella, in_umbrella: true},
+      {:ger_market, in_umbrella: true},
+      {:usa_market, in_umbrella: true},
+      {:converter, in_umbrella: true},
+      {:my_uk_app, in_umbrella: true}
     ]
   end
 end
