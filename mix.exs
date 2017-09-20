@@ -15,6 +15,8 @@ defmodule Stockr.Mixfile do
   #
   # Run "mix help deps" for examples and options.
   defp deps do
-    []
+    [
+      {:gen_stage, "~> 0.12"}
+    ]
   end
 end
