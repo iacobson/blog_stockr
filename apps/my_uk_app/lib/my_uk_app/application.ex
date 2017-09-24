@@ -8,8 +8,7 @@ defmodule MyUkApp.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      # Starts a worker by calling: MyUkApp.Worker.start_link(arg)
-      # {MyUkApp.Worker, arg},
+      MyUkApp.ReceiveConsumer
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

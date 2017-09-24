@@ -8,7 +8,7 @@ defmodule Shared.Interface do
   end
 
   def process_info(name, event) do
-    GenServer.handle_call(name, {:process_info, event})
+    GenServer.call(name, {:process_info, event})
   end
 
   # CALLBACKS
