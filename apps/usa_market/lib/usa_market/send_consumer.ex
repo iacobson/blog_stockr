@@ -1,5 +1,11 @@
 defmodule UsaMarket.SendConsumer do
   use GenStage
+  use UmbrellaStage,
+    type: :consumer,
+    producers: [{
+        Converter.SendProducerConsumer,
+        [selector: fn(%{currency: currency}) -> currency == :usd end]
+      }]
 
   # API
 
@@ -10,6 +16,7 @@ defmodule UsaMarket.SendConsumer do
   # CALLBACKS
 
   def init(:ok) do
+    umbrella_sync_subscribe()
     {:consumer, :no_state}
   end
 

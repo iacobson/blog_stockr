@@ -1,5 +1,10 @@
 defmodule MyUkApp.ReceiveConsumer do
   use GenStage
+  use UmbrellaStage,
+    type: :consumer,
+    producers: [
+      {Converter.ReceiveProducerConsumer, []}
+    ]
 
   # API
 
@@ -10,6 +15,7 @@ defmodule MyUkApp.ReceiveConsumer do
   # CALLBACKS
 
   def init(:ok) do
+    umbrella_sync_subscribe()
     {:consumer, :no_state}
   end
 

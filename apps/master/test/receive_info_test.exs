@@ -3,9 +3,6 @@ defmodule Master.ReceiveInfoTest do
 
   test "receive stock market info in GBP from US and Germany" do
     {:ok, _interface} = Shared.Interface.start_link(MyUkAppInterface, self())
-    GenStage.sync_subscribe(MyUkApp.ReceiveConsumer, to: Converter.ReceiveProducerConsumer)
-    GenStage.sync_subscribe(Converter.ReceiveProducerConsumer, to: GerMarket.ReceiveProducer)
-    GenStage.sync_subscribe(Converter.ReceiveProducerConsumer, to: UsaMarket.ReceiveProducer)
 
     usa_info = [
       %{company: "A", price_per_share: 100, currency: :usd},

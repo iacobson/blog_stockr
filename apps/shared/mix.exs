@@ -26,7 +26,8 @@ defmodule Shared.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:gen_stage, "~> 0.12"}
+      {:gen_stage, "~> 0.12"},
+      {:umbrella_stage, "~> 0.1"}
     ]
   end
 end

@@ -1,5 +1,11 @@
 defmodule Converter.SendProducerConsumer do
   use GenStage
+  use UmbrellaStage,
+    type: :producer_consumer,
+    producers: [
+      {MyUkApp.SendProducer, []},
+    ]
+
   @gbp_to_eur 1.10
   @gbp_to_usd 1.30
 
@@ -12,6 +18,7 @@ defmodule Converter.SendProducerConsumer do
   # CALLBACKS
 
   def init(:ok) do
+    umbrella_sync_subscribe()
     {:producer_consumer, :no_state, dispatcher: GenStage.BroadcastDispatcher}
   end
 

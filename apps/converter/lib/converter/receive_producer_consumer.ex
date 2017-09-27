@@ -1,5 +1,12 @@
 defmodule Converter.ReceiveProducerConsumer do
   use GenStage
+  use UmbrellaStage,
+    type: :producer_consumer,
+    producers: [
+      {GerMarket.ReceiveProducer, []},
+      {UsaMarket.ReceiveProducer, []}
+    ]
+
   @eur_to_gbp 0.90
   @usd_to_gbp 0.75
 
@@ -12,6 +19,7 @@ defmodule Converter.ReceiveProducerConsumer do
   # CALLBACKS
 
   def init(:ok) do
+    umbrella_sync_subscribe()
     {:producer_consumer, :no_state}
   end
 

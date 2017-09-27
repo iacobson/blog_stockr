@@ -1,5 +1,7 @@
 defmodule UsaMarket.ReceiveProducer do
   use GenStage
+  use UmbrellaStage,
+    type: :producer
 
   # API
 
@@ -14,6 +16,7 @@ defmodule UsaMarket.ReceiveProducer do
   # CALLBACKS
 
   def init(:ok) do
+    umbrella_sync_subscribe()
     {:producer, :no_state}
   end
 

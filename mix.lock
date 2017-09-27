@@ -1,1 +1,2 @@
-%{"gen_stage": {:hex, :gen_stage, "0.12.2", "e0e347cbb1ceb5f4e68a526aec4d64b54ad721f0a8b30aa9d28e0ad749419cbb", [], [], "hexpm"}}
+%{"gen_stage": {:hex, :gen_stage, "0.12.2", "e0e347cbb1ceb5f4e68a526aec4d64b54ad721f0a8b30aa9d28e0ad749419cbb", [], [], "hexpm"},
+  "umbrella_stage": {:hex, :umbrella_stage, "0.1.0", "2c531686a59b5bbf14abdf9a6e7af0e6f2d3ed65fb4a69b1a38d4f95d21e6ff3", [], [{:gen_stage, "~> 0.12", [hex: :gen_stage, repo: "hexpm", optional: false]}], "hexpm"}}
