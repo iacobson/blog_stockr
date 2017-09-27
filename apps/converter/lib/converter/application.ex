@@ -8,7 +8,8 @@ defmodule Converter.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      Converter.ReceiveProducerConsumer
+      Converter.ReceiveProducerConsumer,
+      Converter.SendProducerConsumer
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

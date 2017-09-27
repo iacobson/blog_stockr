@@ -5,7 +5,8 @@ defmodule GerMarket.Application do
 
   def start(_type, _args) do
     children = [
-      GerMarket.ReceiveProducer
+      GerMarket.ReceiveProducer,
+      GerMarket.SendConsumer
     ]
 
     opts = [strategy: :one_for_one, name: GerMarket.Supervisor]

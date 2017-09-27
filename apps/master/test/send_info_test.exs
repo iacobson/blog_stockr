@@ -1,10 +1,20 @@
 defmodule Master.SendInfoTest do
+  use ExUnit.Case
+
   test "send out stock market info in EUR and USD" do
     {:ok, _interface} = Shared.Interface.start_link(GerMarketInterface, self())
     {:ok, _interface} = Shared.Interface.start_link(UsaMarketInterface, self())
-    GenServer.sync_subscribe(GerMarket.SendConsumer, to: Converter.SendProducerConsumer)
-    GenServer.sync_subscribe(UsaMarket.SendConsumer, to: Converter.SendProducerConsumer)
-    GenServer.sync_subscribe(Converter.SendProducerConsumer, to: MyUkApp.SendProducer)
+    GenStage.sync_subscribe(
+      GerMarket.SendConsumer,
+      to: Converter.SendProducerConsumer,
+      selector: fn(%{currency: currency}) -> currency == :eur end
+    )
+    GenStage.sync_subscribe(
+      UsaMarket.SendConsumer,
+      to: Converter.SendProducerConsumer,
+      selector: fn(%{currency: currency}) -> currency == :usd end
+    )
+    GenStage.sync_subscribe(Converter.SendProducerConsumer, to: MyUkApp.SendProducer)
 
     uk_info = [
       %{company: "E", price_per_share: 200, currency: :gbp},
