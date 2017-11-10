@@ -20,7 +20,8 @@ defmodule MyUkApp.ReceiveConsumer do
   end
 
   def handle_events(events, _from, state) do
-    Enum.each(events, &Shared.Interface.process_info(MyUkAppInterface, &1))
+    #Enum.each(events, &Shared.Interface.process_info(MyUkAppInterface, &1))
+    Enum.each(events, &(IO.inspect(&1, label: "[UK interface] ")))
     {:noreply, [], state}
   end
 end
