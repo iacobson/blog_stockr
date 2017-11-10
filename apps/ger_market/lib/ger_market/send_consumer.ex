@@ -22,7 +22,7 @@ defmodule GerMarket.SendConsumer do
 
   def handle_events(events, _from, state) do
     #Enum.each(events, &Shared.Interface.process_info(GerMarketInterface, &1))
-    Enum.each(events, &(IO.inspect(&1, label: "[GER interface] ")))
+    #Enum.each(events, &(IO.inspect(&1, label: "[GER interface] ")))
     {:noreply, [], state}
   end
 end

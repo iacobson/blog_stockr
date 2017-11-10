@@ -5,7 +5,7 @@ defmodule MyUkApp.Application do
 
   def start(_type, _args) do
     children = [
-      MyUkApp.ReceiveConsumer,
+      #MyUkApp.ReceiveConsumer,
       MyUkApp.SendProducer
     ]
 

@@ -9,21 +9,21 @@ defmodule Shared.DataGenerator do
   defp generate({"US", _} = data) do
     event = event(data)
     random_sleep()
-    IO.inspect(event, label: "[US interface] ")
+    #IO.inspect(event, label: "[US interface] ")
     UsaMarket.ReceiveProducer.receive_info(event)
   end
 
   defp generate({"GER", _} = data) do
     event = event(data)
     random_sleep()
-    IO.inspect(event, label: "[GER interface] ")
+    #IO.inspect(event, label: "[GER interface] ")
     GerMarket.ReceiveProducer.receive_info(event)
   end
 
   defp generate({"UK", _} = data) do
     event = event(data)
     random_sleep()
-    IO.inspect(event, label: "[UK interface] ")
+    #IO.inspect(event, label: "[UK interface] ")
     MyUkApp.SendProducer.send_info(event)
   end
 

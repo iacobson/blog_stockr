@@ -9,7 +9,7 @@ defmodule MyUkApp.ReceiveConsumer do
   # API
 
   def start_link(_opts) do
-    GenStage.start_link(__MODULE__, :ok, name: __MODULE__)
+    GenStage.start_link(__MODULE__, :ok)
   end
 
   # CALLBACKS
